@@ -8,4 +8,9 @@ contract Actor {
     /*** TRY FUNCTIONS ***/
     /*********************/
 
+    function try_addFunds(address atm, uint256 amount) external returns (bool ok) {
+        string memory sig = "addFunds(uint256)";
+        (ok,) = address(atm).call(abi.encodeWithSignature(sig, amount));
+    }
+
 }

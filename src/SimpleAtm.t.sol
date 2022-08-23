@@ -24,4 +24,8 @@ contract SimpleTest is DSTest, Utility {
         assertEq(simpleAtm.balance(), 0 ether);
     }
 
+    function test_simpleAtm_addFunds_restrictions() public {
+        
+    }
+
 }
