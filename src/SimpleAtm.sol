@@ -24,12 +24,12 @@ contract SimpleAtm {
     // ~ Modifiers ~
 
     modifier isOwner() {
-        require(msg.sender == owner, "Err: msg.sender is now owner");
+        require(msg.sender == owner, "Err: msg.sender is not owner");
         _;
     }
 
     modifier isBank() {
-        require(msg.sender == owner, "Err: msg.sender is now owner");
+        require(msg.sender == bank, "Err: msg.sender is not banker");
         _;
     }
     
@@ -44,9 +44,9 @@ contract SimpleAtm {
         balance -= _amount;
     }
 
-    function changeOwner(address _address) external isBank {
-        require(_address != address(0), "Err: Cannot set account owner to address(0)");
-        require(owner != _address, "Err: address already set as owner");
-        owner = _address;
+    function changeOwner(address _newOwner) external isBank {
+        require(_newOwner != address(0), "Err: Cannot set account owner to address(0)");
+        require(owner != _newOwner, "Err: address already set as owner");
+        owner = _newOwner;
     }
 }
